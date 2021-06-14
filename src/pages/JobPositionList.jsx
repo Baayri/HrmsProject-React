@@ -8,19 +8,18 @@ export default function JobPositionList() {
 
     useEffect(() => {
         let jobPositionService = new JobPositionServie()
-        jobPositionService.getJobPosition().then(result => setJobPositions(result.data.data))
+        jobPositionService.getJobPositions().then(result => setJobPositions(result.data.data))
     }, [])
-
     return (
         <div>
             <Header>
-                Job Positions
+                İş Pozisyonları
             </Header>
 
             <Table color="black" celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Job Title</Table.HeaderCell>
+                        <Table.HeaderCell>Pozisyon Adı</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 

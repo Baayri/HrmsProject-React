@@ -5,3 +5,8 @@
 .ui.main.container{
   margin-top: 5em;
 }
+
+.verticalMenu{
+  margin-top: 2em;
+  position: fixed;
+}

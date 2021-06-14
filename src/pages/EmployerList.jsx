@@ -8,23 +8,23 @@ export default function EmployerList() {
 
     useEffect(() => {
         let employerService = new EmployerService();
-        employerService.getEmployer().then(result => setEmployers(result.data.data))
+        employerService.getEmployers().then(result => setEmployers(result.data.data))
     },[])
 
     return (
         <div>
 
             <Header>
-                Employers
+                İşverenler
             </Header>
 
             <Table color="black" celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Company Name</Table.HeaderCell>
+                        <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
-                        <Table.HeaderCell>Web Address</Table.HeaderCell>
-                        <Table.HeaderCell>Detail</Table.HeaderCell>
+                        <Table.HeaderCell>Web Sitesi</Table.HeaderCell>
+                        <Table.HeaderCell>Detaylar</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -36,7 +36,7 @@ export default function EmployerList() {
                                 <Table.Cell>{employer.email}</Table.Cell>
                                 <Table.Cell>{employer.website}</Table.Cell>
                                 <Table.Cell>
-                                    <Button>view</Button>
+                                    <Button>Detay</Button>
                                 </Table.Cell>
 
                             </Table.Row>

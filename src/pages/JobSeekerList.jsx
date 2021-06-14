@@ -8,24 +8,24 @@ export default function JobSeekerList() {
 
     useEffect(() => {
         let jobSeekerService = new JobSeekerService()
-        jobSeekerService.getJobSeeker().then(result => setJobSeekers(result.data.data))
+        jobSeekerService.getJobSeekers().then(result => setJobSeekers(result.data.data))
     }, [])
 
     return (
         <div>
 
             <Header>
-                Job Seekers
+                İş Arayanlar
             </Header>
 
             <Table color="black" celled>
 
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>First Name</Table.HeaderCell>
-                        <Table.HeaderCell>Last Name</Table.HeaderCell>
+                        <Table.HeaderCell>Adı</Table.HeaderCell>
+                        <Table.HeaderCell>Soyadı</Table.HeaderCell>
                         <Table.HeaderCell>Email</Table.HeaderCell>
-                        <Table.HeaderCell>Detail</Table.HeaderCell>
+                        <Table.HeaderCell>Detaylar</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -37,7 +37,7 @@ export default function JobSeekerList() {
                                 <Table.Cell>{jobSeeker.lastName}</Table.Cell>
                                 <Table.Cell>{jobSeeker.email}</Table.Cell>
                                 <Table.Cell>
-                                    <Button>view</Button>
+                                    <Button>Detay</Button>
                                 </Table.Cell>
                             </Table.Row>
                         ))

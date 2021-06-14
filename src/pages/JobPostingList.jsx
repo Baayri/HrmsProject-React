@@ -8,23 +8,23 @@ export default function JobPostingList() {
 
     useEffect(() => {
         let jobPostingService = new JobPostingService()
-        jobPostingService.getJobPosting().then(result => setJobPostings(result.data.data))
+        jobPostingService.getJobPostings().then(result => setJobPostings(result.data.data))
     }, [])
 
     return (
         <div>
 
             <Header>
-                Job Postings
+                İş İlanları
             </Header>
 
             <Table color="black" celled>
                 <Table.Header>
                     <Table.Row>
-                        <Table.HeaderCell>Company Name</Table.HeaderCell>
-                        <Table.HeaderCell>City</Table.HeaderCell>
-                        <Table.HeaderCell>Position</Table.HeaderCell>
-                        <Table.HeaderCell>Detail</Table.HeaderCell>
+                        <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
+                        <Table.HeaderCell>Şehir</Table.HeaderCell>
+                        <Table.HeaderCell>Pozisyon Adı</Table.HeaderCell>
+                        <Table.HeaderCell>Detaylar</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -36,7 +36,7 @@ export default function JobPostingList() {
                                 <Table.Cell>{jobPosting.city.cityName}</Table.Cell>
                                 <Table.Cell>{jobPosting.job.title}</Table.Cell>
                                 <Table.Cell>
-                                    <Button>view</Button>
+                                    <Button>Detay</Button>
                                 </Table.Cell>
                             </Table.Row>
                         ))
