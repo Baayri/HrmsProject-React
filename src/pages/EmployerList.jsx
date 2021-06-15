@@ -18,7 +18,7 @@ export default function EmployerList() {
                 İşverenler
             </Header>
 
-            <Table color="black" celled>
+            <Table color="black" celled className="shadow">
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Şirket Adı</Table.HeaderCell>

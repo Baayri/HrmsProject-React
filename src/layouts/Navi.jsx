@@ -1,8 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useHistory } from 'react-router'
-import { Button, Container, Dropdown, Menu } from 'semantic-ui-react'
+import { Container } from 'semantic-ui-react'
+import SignOut from './SignOut'
+import SignIn from './SignIn'
+import { Nav, Navbar, NavbarBrand } from 'react-bootstrap'
+
 
 export default function Navi() {
+
+    const [isAuthenticated, setIsAuthenticated] = useState(false)
+
+    function handleSignIn() {
+        setIsAuthenticated(true)
+    }
+
+    function handleSignOut() {
+        setIsAuthenticated(false)
+    }
 
     const history = useHistory()
 
@@ -16,7 +30,24 @@ export default function Navi() {
 
     return (
         <div>
-            <Menu size="tiny" inverted fixed="top">
+
+            <Navbar bg="dark" variant="dark">
+                <Container>
+                    <NavbarBrand>HRMS</NavbarBrand>
+                    <Nav className="mr-auto">
+                        <Nav.Link onClick={handleJobPosting}>İş İlanları</Nav.Link>
+                        <Nav.Link onClick={handleJobPostingAdd}>İlan Yayınla</Nav.Link>
+                    </Nav>
+                    <Nav className="ml-auto">
+                        {!isAuthenticated ? <SignOut signIn={handleSignIn} /> :
+                            <SignIn signOut={handleSignOut} />} 
+                    </Nav>
+
+
+                </Container>
+            </Navbar>
+
+            {/* <Menu size="tiny" inverted fixed="top">
 
                 <Container>
                     <Menu.Item name='HRMS' />
@@ -27,36 +58,14 @@ export default function Navi() {
 
                     <Menu.Menu position='right'>
 
-                        <Menu.Item>
-                            <Button.Group>
-                                <Button color="blue">Giriş Yap</Button>
-                                <Button.Or text="<->"/>
-                                <Button color="red">Kayıt Ol</Button>
-                            </Button.Group>
-                        </Menu.Item>
-
-                        <Menu.Item>
-                            <Dropdown
-                                color="red"
-                                text='İşveren'
-                                icon='add user'
-                                floating
-                                labeled
-                                button
-                                className='icon'
-                            >
-                                <Dropdown.Menu>
-                                    <Dropdown.Item color="blue">Giriş Yap</Dropdown.Item>
-                                    <Dropdown.Item color="red">Kayıt Ol</Dropdown.Item>
-                                </Dropdown.Menu>
-                            </Dropdown>
-                        </Menu.Item>
+                        {!isAuthenticated? <SignOut signIn={handleSignIn}/>:
+                        <SignIn signOut={handleSignOut}/>}
 
                     </Menu.Menu>
                 </Container>
 
 
-            </Menu>
+            </Menu> */}
         </div>
     )
 }

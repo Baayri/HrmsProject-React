@@ -18,7 +18,7 @@ export default function JobSeekerList() {
                 İş Arayanlar
             </Header>
 
-            <Table color="black" celled>
+            <Table color="black" celled className="shadow">
 
                 <Table.Header>
                     <Table.Row>

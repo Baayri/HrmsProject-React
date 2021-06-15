@@ -19,7 +19,7 @@ export default function VerticalMenu() {
 
     return (
         <div className="verticalMenu">
-            <Menu pointing vertical>
+            <Menu pointing vertical className="shadow">
                 <Menu.Item onClick={handleJobPosition}>İş Pozisyonları</Menu.Item>
                 <Menu.Item onClick={handleEmployer}>İşverenler</Menu.Item>
                 <Menu.Item onClick={handleJobSeeker}>İş Arayanlar</Menu.Item>

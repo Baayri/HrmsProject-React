@@ -16,7 +16,7 @@ export default function JobPositionList() {
                 İş Pozisyonları
             </Header>
 
-            <Table color="black" celled>
+            <Table color="black" celled className="shadow">
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Pozisyon Adı</Table.HeaderCell>

@@ -296,7 +296,7 @@ export default function AddJobPostingPage() {
                          disabled={!formik.dirty || formik.isSubmitting}
                          className="float-left"
                          >
-                             submit
+                             Yayınla
                         </Button>
 
                     </Form>
