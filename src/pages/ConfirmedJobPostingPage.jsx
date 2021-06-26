@@ -1,32 +1,29 @@
-import React, { useState, useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { toast } from 'react-toastify'
-import { Button, Header, Table, Icon } from 'semantic-ui-react'
+import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { Button, Header, Table } from 'semantic-ui-react'
 import JobPostingService from '../services/jobPostingService'
-import { addToFavorite } from '../store/actions/favoriteActions'
 
-export default function JobPostingList() {
-
-    const dispatch = useDispatch()
-
+export default function ConfirmedJobPostingPage() {
+    
     const [jobPostings, setJobPostings] = useState([])
 
-    useEffect(() => {
-        let jobPostingService = new JobPostingService()
-        jobPostingService.getJobPostingsByActive().then(result => setJobPostings(result.data.data))
-    }, [])
 
-    const handleAddToFavorite = (jobPostings) => {
-        dispatch(addToFavorite(jobPostings))
-        toast.dark("Favorilere eklendi")
+
+    useEffect(()=>{
+        const jobPostingService=new JobPostingService()
+        jobPostingService.getJobPostingsByInActive().then(result => setJobPostings(result.data.data))
+    },[])
+
+    function handleConfirmed(id) {
+        const jobPostingService=new JobPostingService()
+        jobPostingService.updateByActive(id,true)
     }
-
 
     return (
         <div>
-
             <Header>
-                İş İlanları
+                İş İlanları(Aktif Değil)
             </Header>
 
             <Table color="black" celled className="shadow">
@@ -35,7 +32,7 @@ export default function JobPostingList() {
                         <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
                         <Table.HeaderCell>Şehir</Table.HeaderCell>
                         <Table.HeaderCell>Pozisyon Adı</Table.HeaderCell>
-                        <Table.HeaderCell>Detaylar</Table.HeaderCell>
+                        <Table.HeaderCell>Onay</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -47,10 +44,9 @@ export default function JobPostingList() {
                                 <Table.Cell>{jobPosting.city.cityName}</Table.Cell>
                                 <Table.Cell>{jobPosting.job.title}</Table.Cell>
                                 <Table.Cell>
-                                    <Button>Detay</Button>
-                                    <Button onClick={() => handleAddToFavorite(jobPosting)} icon color='red'>
-                                        <Icon name='heart' />
-                                    </Button>
+                                    <Button
+                                    onClick={() => handleConfirmed(jobPosting.id)}
+                                    >Onayla</Button>
                                 </Table.Cell>
                             </Table.Row>
                         ))

@@ -7,10 +7,15 @@ import JobPostingList from '../pages/JobPostingList'
 import JobSeekerList from '../pages/JobSeekerList'
 import VerticalMenu from './VerticalMenu'
 import AddJobPostingPage from '../pages/AddJobPostingPage'
+import ConfirmedJobPostingPage from '../pages/ConfirmedJobPostingPage'
+import { ToastContainer } from 'react-toastify'
+import EmployerUpdatePage from '../pages/EmployerUpdatePage'
+import ConfirmedEmployerUpdatePage from '../pages/ConfirmedEmployerUpdatePage'
 
 export default function Dashboard() {
     return (
         <div>
+            <ToastContainer position="bottom-right"/>
             <Grid>
 
                 <Grid.Row>
@@ -26,7 +31,11 @@ export default function Dashboard() {
                         <Route exact path="/jobpositions" component={JobPositionList}  />
                         <Route exact path="/jobseekers" component={JobSeekerList}  />
                         <Route exact path="/jobPostingAdd" component={AddJobPostingPage}/>
+                        <Route exact path="/confirmedJobPostings" component={ConfirmedJobPostingPage}/>
+                        <Route exact path="/employerUpdate" component={EmployerUpdatePage}/>
+                        <Route exact path="/ConfirmedEmployerUpdate" component={ConfirmedEmployerUpdatePage}/>
                     </Grid.Column>
+
 
                 </Grid.Row>
 

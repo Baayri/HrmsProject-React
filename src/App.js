@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Navi from './layouts/Navi';
 import Dashboard from './layouts/Dashboard';
 import { Container } from 'semantic-ui-react';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (

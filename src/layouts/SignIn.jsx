@@ -6,7 +6,7 @@ export default function SignIn({ signOut }) {
     return (
         <div>
 
-            <Dropdown as={ButtonGroup}>
+            <Dropdown as={ButtonGroup} className="mr-2">
                 <Button variant="info"><Icon name="user circle"></Icon></Button>
 
                 <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />

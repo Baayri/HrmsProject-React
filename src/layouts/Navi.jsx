@@ -4,6 +4,7 @@ import { Container } from 'semantic-ui-react'
 import SignOut from './SignOut'
 import SignIn from './SignIn'
 import { Nav, Navbar, NavbarBrand } from 'react-bootstrap'
+import Favorites from './Favorites'
 
 
 export default function Navi() {
@@ -38,9 +39,18 @@ export default function Navi() {
                         <Nav.Link onClick={handleJobPosting}>İş İlanları</Nav.Link>
                         <Nav.Link onClick={handleJobPostingAdd}>İlan Yayınla</Nav.Link>
                     </Nav>
+
+
+
                     <Nav className="ml-auto">
-                        {!isAuthenticated ? <SignOut signIn={handleSignIn} /> :
-                            <SignIn signOut={handleSignOut} />} 
+                        <Nav.Item>
+                            {!isAuthenticated ? <SignOut signIn={handleSignIn} /> :
+                                <SignIn signOut={handleSignOut} />}
+                        </Nav.Item>
+
+                        <Nav.Item>
+                            {isAuthenticated ? <Favorites/>:null}
+                        </Nav.Item>
                     </Nav>
 
 
