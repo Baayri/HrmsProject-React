@@ -4,13 +4,17 @@ export default class JobPostingService{
     getJobPostings(){
         return axios.get("http://localhost:8080/api/jobPostings/getAll")
     }
+
+    getAllByPage(pageNo,pageSize){
+        return axios.post(`http://localhost:8080/api/jobPostings/getAllByPage?pageNo=${pageNo}&pageSize=${pageSize}`)
+    }
     
-    getJobPostingsByActive(){
-        return axios.get("http://localhost:8080/api/jobPostings/getAllByActive")
+    getJobPostingsByActive(pageNo,pageSize){
+        return axios.get(`http://localhost:8080/api/jobPostings/getAllByActive?pageNo=${pageNo}&pageSize=${pageSize}`)
     }
 
-    getJobPostingsByInActive(){
-        return axios.get("http://localhost:8080/api/jobPostings/getAllByInActive")
+    getJobPostingsByInActive(pageNo,pageSize){
+        return axios.get(`http://localhost:8080/api/jobPostings/getAllByInActive?pageNo=${pageNo}&pageSize=${pageSize}`)
     }
 
     updateByActive(id,isConfirmed){

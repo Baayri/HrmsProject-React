@@ -17,7 +17,7 @@ export default function favoriteReducer(state=initialState, {type,payload}) {
             else{
                 return{
                     ...state,
-                    favoriteItems:[...state.favoriteItems,{quantity: 1, jobPosting: payload}] 
+                    favoriteItems:[...state.favoriteItems,{jobPosting: payload}] 
                 }
             }
         

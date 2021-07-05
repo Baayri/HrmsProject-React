@@ -12,12 +12,14 @@ export default function ConfirmedJobPostingPage() {
 
     useEffect(()=>{
         const jobPostingService=new JobPostingService()
-        jobPostingService.getJobPostingsByInActive().then(result => setJobPostings(result.data.data))
+        jobPostingService.getJobPostingsByInActive.then(result => setJobPostings(result.data.data))
     },[])
 
-    function handleConfirmed(id) {
+    function handleConfirmed(e,id) {
         const jobPostingService=new JobPostingService()
-        jobPostingService.updateByActive(id,true)
+        jobPostingService.updateByActive(id,true).then(result =>{
+            e.target.parentElement.parentElement.remove();
+        })
     }
 
     return (
@@ -45,7 +47,7 @@ export default function ConfirmedJobPostingPage() {
                                 <Table.Cell>{jobPosting.job.title}</Table.Cell>
                                 <Table.Cell>
                                     <Button
-                                    onClick={() => handleConfirmed(jobPosting.id)}
+                                    onClick={(e) => handleConfirmed(e,jobPosting.id)}
                                     >Onayla</Button>
                                 </Table.Cell>
                             </Table.Row>

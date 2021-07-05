@@ -1,4 +1,4 @@
-import { Button } from 'semantic-ui-react';
+import { Button, Card } from 'semantic-ui-react';
 import { Form, Formik } from 'formik';
 import React from 'react'
 import * as Yup from "yup";
@@ -9,9 +9,9 @@ export default function EmployerUpdatePage() {
 
     let employerUpdateService = new EmployerUpdateService()
 
-    const initialValues = {employer:{id:"4"},companyName:"",website:"",phone:""}
+    const initialValues = { employer: { id: "4" }, companyName: "", website: "", phone: "" }
 
-    const schema=Yup.object({
+    const schema = Yup.object({
         companyName: Yup.string().required("Zorunlu"),
         website: Yup.string().required("Zorunlu"),
         phone: Yup.number().required("Zorunlu"),
@@ -22,18 +22,22 @@ export default function EmployerUpdatePage() {
             <Formik
                 initialValues={initialValues}
                 validationSchema={schema}
-                onSubmit={(values)=>{
-                    employerUpdateService.add(values).then((result)=> console.log(result))
-                    
+                onSubmit={(values) => {
+                    employerUpdateService.add(values).then((result) => console.log(result))
+
                 }}
             >
-                <Form className="ui form">
-                    <KodlamaIoTextInput name="companyName" placeholder="Şirket adı" />
-                    <KodlamaIoTextInput name="website" placeholder="Web sitesi" />
-                    <KodlamaIoTextInput name="phone" placeholder="Telefon numarası" />
-                    <Button color="green" type="submit">Güncelle</Button>
-                </Form>
-
+                <Card fluid className="shadow">
+                    <Card.Content header="Bilgileri Güncelle" />
+                    <Card.Content>
+                        <Form className="ui form">
+                            <KodlamaIoTextInput name="companyName" placeholder="Şirket adı" />
+                            <KodlamaIoTextInput name="website" placeholder="Web sitesi" />
+                            <KodlamaIoTextInput name="phone" placeholder="Telefon numarası" />
+                            <Button color="green" type="submit">Güncelle</Button>
+                        </Form>
+                    </Card.Content>
+                </Card>
             </Formik>
         </div>
     )

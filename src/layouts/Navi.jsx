@@ -40,42 +40,20 @@ export default function Navi() {
                         <Nav.Link onClick={handleJobPostingAdd}>İlan Yayınla</Nav.Link>
                     </Nav>
 
-
-
                     <Nav className="ml-auto">
+
+                        <Nav.Item>
+                            {isAuthenticated ? <Favorites /> : null}
+                        </Nav.Item>
+
                         <Nav.Item>
                             {!isAuthenticated ? <SignOut signIn={handleSignIn} /> :
                                 <SignIn signOut={handleSignOut} />}
                         </Nav.Item>
-
-                        <Nav.Item>
-                            {isAuthenticated ? <Favorites/>:null}
-                        </Nav.Item>
+                     
                     </Nav>
-
-
                 </Container>
             </Navbar>
-
-            {/* <Menu size="tiny" inverted fixed="top">
-
-                <Container>
-                    <Menu.Item name='HRMS' />
-
-                    <Menu.Item onClick={handleJobPosting}>İş İlanları</Menu.Item>
-
-                    <Menu.Item onClick={handleJobPostingAdd}>İlan Yayınla</Menu.Item>
-
-                    <Menu.Menu position='right'>
-
-                        {!isAuthenticated? <SignOut signIn={handleSignIn}/>:
-                        <SignIn signOut={handleSignOut}/>}
-
-                    </Menu.Menu>
-                </Container>
-
-
-            </Menu> */}
         </div>
     )
 }
