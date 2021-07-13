@@ -29,6 +29,10 @@ export default function Navi() {
         history.push("/jobPostingAdd")
     }
 
+    function handleCurriculaVitaeAdd() {
+        history.push("/curriculaVitaeAdd")
+    }
+
     return (
         <div>
 
@@ -38,6 +42,7 @@ export default function Navi() {
                     <Nav className="mr-auto">
                         <Nav.Link onClick={handleJobPosting}>İş İlanları</Nav.Link>
                         <Nav.Link onClick={handleJobPostingAdd}>İlan Yayınla</Nav.Link>
+                        <Nav.Link onClick={handleCurriculaVitaeAdd}>Cv Ekle</Nav.Link>
                     </Nav>
 
                     <Nav className="ml-auto">

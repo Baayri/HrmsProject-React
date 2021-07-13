@@ -9,7 +9,7 @@ export default function SignIn({ signOut }) {
             <Dropdown as={ButtonGroup} className="mr-2">
                 <Button variant="info"><Icon name="user circle"></Icon></Button>
 
-                <Dropdown.Toggle split variant="secondary" id="dropdown-split-basic" />
+                <Dropdown.Toggle split variant="outline-info" id="dropdown-split-basic" />
 
                 <Dropdown.Menu>
                     <Dropdown.Item >Ayarlar</Dropdown.Item>

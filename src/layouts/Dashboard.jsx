@@ -13,6 +13,7 @@ import EmployerUpdatePage from '../pages/EmployerUpdatePage'
 import ConfirmedEmployerUpdatePage from '../pages/ConfirmedEmployerUpdatePage'
 import AddCurriculaVitaePage from '../pages/AddCurriculaVitaePage'
 import FavoriteJobPostingList from '../pages/FavoriteJobPostingList'
+import JobPostingDetail from '../pages/JobPostingDetail'
 
 export default function Dashboard() {
     return (
@@ -38,6 +39,7 @@ export default function Dashboard() {
                         <Route exact path="/employerUpdate" component={EmployerUpdatePage}/>
                         <Route exact path="/confirmedEmployerUpdate" component={ConfirmedEmployerUpdatePage}/>
                         <Route exact path="/favoriteJobPostings" component={FavoriteJobPostingList}/>
+                        <Route exact path="/jobPosting/:id" component={JobPostingDetail}/>
                     </Grid.Column>
 
 

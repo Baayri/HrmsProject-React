@@ -8,6 +8,10 @@ export default class JobPostingService{
     getAllByPage(pageNo,pageSize){
         return axios.post(`http://localhost:8080/api/jobPostings/getAllByPage?pageNo=${pageNo}&pageSize=${pageSize}`)
     }
+
+    getById(id){
+        return axios.get(`http://localhost:8080/api/jobPostings/getById?id=${id}`)
+    }
     
     getJobPostingsByActive(pageNo,pageSize){
         return axios.get(`http://localhost:8080/api/jobPostings/getAllByActive?pageNo=${pageNo}&pageSize=${pageSize}`)

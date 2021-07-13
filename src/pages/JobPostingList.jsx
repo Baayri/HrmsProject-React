@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import { toast } from 'react-toastify'
-import { Button, Header, Table, Pagination, Grid } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Button, Header, Pagination, Grid, Card } from 'semantic-ui-react'
 import JobPostingService from '../services/jobPostingService'
 import { addToFavorite } from '../store/actions/favoriteActions'
 import FavoriteJobPostingService from '../services/favoriteJobPostingService'
@@ -53,30 +54,15 @@ export default function JobPostingList() {
                         <Header>
                             İş İlanları
                         </Header>
+                        {
+                            jobPostings.map(jobPosting => (
+                                <Card  key={jobPosting.id} fluid color="black">
 
-                        <Table color="black" celled className="shadow">
-                            <Table.Header>
-                                <Table.Row>
-                                    <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
-                                    <Table.HeaderCell>Şehir</Table.HeaderCell>
-                                    <Table.HeaderCell>Pozisyon Adı</Table.HeaderCell>
-                                    <Table.HeaderCell>Detaylar</Table.HeaderCell>
-                                    <Table.HeaderCell>Favorilere Ekle</Table.HeaderCell>
-                                </Table.Row>
-                            </Table.Header>
-
-                            <Table.Body>
-                                {
-                                    jobPostings.map(jobPosting => (
-                                        <Table.Row key={jobPosting.id}>
-                                            <Table.Cell>{jobPosting.employer.companyName}</Table.Cell>
-                                            <Table.Cell>{jobPosting.city.cityName}</Table.Cell>
-                                            <Table.Cell>{jobPosting.job.title}</Table.Cell>
-                                            <Table.Cell textAlign="center">
-                                                <Button size="tiny" secondary>Detay</Button>
-                                            </Table.Cell>
-                                            <Table.Cell textAlign="center">
+                                    <Card.Content textAlign="left">
+                                        <Card.Header>
+                                                {jobPosting.job.title}
                                                 <Button
+                                                    className="right floated"
                                                     onClick={() =>
                                                         handleAddToFavorite(jobPosting)
                                                     }
@@ -84,13 +70,20 @@ export default function JobPostingList() {
                                                     color="red"
                                                     size="tiny"
                                                 />
-                                            </Table.Cell>
-                                        </Table.Row>
-                                    ))
-                                }
-
-                            </Table.Body>
-                        </Table>
+                                            </Card.Header>
+                                        <Card.Meta>
+                                            {jobPosting.employer.companyName}
+                                        </Card.Meta>
+                                        <Card.Description>
+                                            {jobPosting.city.cityName}
+                                            <Card.Description className="right floated">
+                                                <Link to={`jobPosting/${jobPosting.id}`}><Button size="tiny" secondary>Detay</Button></Link>
+                                            </Card.Description>
+                                        </Card.Description>
+                                    </Card.Content>
+                                </Card>
+                            ))
+                        }
 
                         <Pagination
                             firstItem={null}
@@ -104,12 +97,12 @@ export default function JobPostingList() {
                     </Grid.Column>
 
                     <Grid.Column width={2}>
-                        <div className="mt-5">
+                        <div className="verticalMenu">
                             <Button.Group size="tiny" color="black" vertical>
-                                <Button onClick={()=>handlePageSizeChange(10)}>10</Button>
-                                <Button onClick={()=>handlePageSizeChange(20)}>20</Button>
-                                <Button onClick={()=>handlePageSizeChange(50)}>50</Button>
-                                <Button onClick={()=>handlePageSizeChange(100)}>100</Button>
+                                <Button onClick={() => handlePageSizeChange(10)}>10</Button>
+                                <Button onClick={() => handlePageSizeChange(20)}>20</Button>
+                                <Button onClick={() => handlePageSizeChange(50)}>50</Button>
+                                <Button onClick={() => handlePageSizeChange(100)}>100</Button>
                             </Button.Group>
                         </div>
                     </Grid.Column>

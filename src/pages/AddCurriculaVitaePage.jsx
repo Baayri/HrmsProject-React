@@ -10,9 +10,9 @@ export default function AddCurriculaVitaePage() {
             
             >
                 <Card fluid className="shadow">
-                    <Card.Content header="Okul" />
+                    <Card.Content header="Özgeçmiş" />
                     <Card.Content>
-
+                        
                     </Card.Content>
                 </Card>
             </Formik>
